@@ -154,5 +154,3 @@ export DYLD_LIBRARY_PATH=$LLVM_INSTALL_DIR/lib:$DYLD_LIBRARY_PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f "/Users/ulysseskee/.ghcup/env" ] && source "/Users/ulysseskee/.ghcup/env" # ghcup-env

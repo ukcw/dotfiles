@@ -156,3 +156,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f "/Users/ulysseskee/.ghcup/env" ] && source "/Users/ulysseskee/.ghcup/env" # ghcup-env
+
+# Set C++ compiler to use clang from brew for compatibility with C++ 11
+export CC=/opt/homebrew/opt/llvm/bin/clang

@@ -157,5 +157,13 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "/Users/ulysseskee/.ghcup/env" ] && source "/Users/ulysseskee/.ghcup/env" # ghcup-env
 
-# Set C++ compiler to use clang from brew for compatibility with C++ 11
+# Set C++ compiler to use clang from brew for compatibility with C++ 11 -- this was done for Neorg sync-parsers
 export CC=/opt/homebrew/opt/llvm/bin/clang
+
+# Add ~/.emacs.d/bin/ to PATH
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
+# Use GNU grep if installed by homebrew -- the FreeBSD version (that comes with MacOS) is missing some functionalities
+if [ -d "$(brew --prefix)/opt/grep/libexec/gnubin" ]; then
+    PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
+fi

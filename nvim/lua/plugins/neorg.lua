@@ -13,6 +13,7 @@ return {
               home = "~/notes/home",
               work = "~/notes/work",
             },
+            default_workspace = "home",
           },
         },
       },

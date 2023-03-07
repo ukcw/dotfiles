@@ -134,18 +134,23 @@
    '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
    '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
-  (after! org-download
-    (setq org-download-method 'directory
-          org-download-image-dir "images"
-          org-download-heading-lvl nil
-          org-download-timestamp "%Y%m%d-%H%M%S_"
-          org-image-actual-width nil))
+  (setq org-download-image-dir "images")
+  (setq org-download-heading-lvl nil)
+  (setq org-download-timestamp "%Y%m%d-%H%M%S_")
+  (setq org-image-actual-width nil)
 
-(add-hook 'org-mode-hook 'variable-pitch-mode)
-(add-hook 'org-mode-hook 'visual-line-mode)
-(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)))
-(add-hook 'org-src-mode-hook #'display-line-numbers-mode)
-)
+  (after! org-download
+    (setq org-download-method 'directory))
+          ;; org-download-image-dir "images"
+          ;; org-download-heading-lvl nil
+          ;; org-download-timestamp "%Y%m%d-%H%M%S_"
+          ;; org-image-actual-width nil))
+
+  (add-hook 'org-mode-hook 'variable-pitch-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)))
+  (add-hook 'org-src-mode-hook #'display-line-numbers-mode)
+  )
 
 ;; treemacs
 (use-package treemacs-projectile

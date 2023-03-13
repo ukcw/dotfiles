@@ -80,39 +80,71 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(use-package! lsp-tailwindcss)
+(use-package! lsp-tailwindcss
+  :init
+  (setq lsp-tailwindcss-add-on-mode t))
 
 ;; https://ruivieira.dev/doom-emacs.html
 ;; org setup
 (after! org
   ;; disable auto-complete in org-mode buffers
-  (remove-hook 'org-mode-hook #'auto-fill-mode)
+  ;; (remove-hook 'org-mode-hook #'auto-fill-mode)
   ;; disable company too
   (setq company-global-modes '(not org-mode))
   ;; ...
+
+  ;; ORG LATEX PREVIEW
+  (setq org-startup-with-latex-preview t
+        ;; Make latex preview with "C-c C-x C-l" slightly bigger
+        ;; org-format-latex-options
+        ;; (plist-put org-format-latex-options :scale 1.5)
+        ;; Cache the preview images elsewhere
+        org-preview-latex-image-directory "~/.cache/ltximg/")
+
+  ;; (if (string-match-p "RSVG" system-configuration-features)
+  (setq org-preview-latex-default-process 'dvisvgm)
+  ;; (setq org-latex-preview-default-process 'dvipng))
+
+  (setq org-highlight-latex-and-related '(native script entities))
+
+  (require 'org-src)
+  (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t)))
+
+  (setq org-format-latex-options
+        (plist-put org-format-latex-options :background "Transparent"))
+
+  ;; Define a function to set the format latex scale (to be reused in hooks)
+  (defun +org-format-latex-set-scale (scale)
+    (setq-local org-format-latex-options
+                (plist-put org-format-latex-options :scale scale)))
+
+  ;; Set the default scale
+  (+org-format-latex-set-scale 1.4)
+
+
   (setq org-hide-emphasis-markers t) ;; hide emphasis markers e.g. /.../ for italics, *...* for bold
 
-  (let* ((variable-tuple
-          (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
-                ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-                ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-                ((x-list-fonts "Verdana")         '(:font "Verdana"))
-                ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-         (base-font-color     (face-foreground 'default nil 'default))
-         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+  ;; (let* ((variable-tuple
+  ;;         (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+  ;;               ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+  ;;               ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+  ;;               ((x-list-fonts "Verdana")         '(:font "Verdana"))
+  ;;               ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+  ;;               (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+  ;;        (base-font-color     (face-foreground 'default nil 'default))
+  ;;        (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
 
-    (custom-theme-set-faces
-     'user
-     `(org-level-8 ((t (,@headline ,@variable-tuple))))
-     `(org-level-7 ((t (,@headline ,@variable-tuple))))
-     `(org-level-6 ((t (,@headline ,@variable-tuple))))
-     `(org-level-5 ((t (,@headline ,@variable-tuple))))
-     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
-     `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+  ;;   (custom-theme-set-faces
+  ;;    'user
+  ;;    `(org-level-8 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-7 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-6 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-5 ((t (,@headline ,@variable-tuple))))
+  ;;    `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+  ;;    `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
+  ;;    `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+  ;;    `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+  ;;    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 
   (custom-theme-set-faces
    'user
@@ -141,10 +173,10 @@
 
   (after! org-download
     (setq org-download-method 'directory))
-          ;; org-download-image-dir "images"
-          ;; org-download-heading-lvl nil
-          ;; org-download-timestamp "%Y%m%d-%H%M%S_"
-          ;; org-image-actual-width nil))
+  ;; org-download-image-dir "images"
+  ;; org-download-heading-lvl nil
+  ;; org-download-timestamp "%Y%m%d-%H%M%S_"
+  ;; org-image-actual-width nil))
 
   (add-hook 'org-mode-hook 'variable-pitch-mode)
   (add-hook 'org-mode-hook 'visual-line-mode)

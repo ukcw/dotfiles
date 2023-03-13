@@ -110,6 +110,10 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
 
+# helpers to set Java version
+alias j18="export JAVA_HOME=`/usr/libexec/java_home -v 18`; java -version"
+alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -162,8 +166,18 @@ export CC=/opt/homebrew/opt/llvm/bin/clang
 
 # Add ~/.emacs.d/bin/ to PATH
 export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # Use GNU grep if installed by homebrew -- the FreeBSD version (that comes with MacOS) is missing some functionalities
 if [ -d "$(brew --prefix)/opt/grep/libexec/gnubin" ]; then
     PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
 fi
+
+# Set Golang up
+export GOPATH=$HOME/dev/go-workspace # don't forget to change your path correctly!
+export GOROOT=/opt/homebrew/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+# Python Scripts Path (e.g. pipenv)
+export PATH=$PATH:/Users/ulysseskee/.local/bin

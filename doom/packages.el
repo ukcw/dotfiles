@@ -53,3 +53,8 @@
 (package! dirvish)
 (package! python-black) ;; black formatter
 ;; (package! mixed-pitch)
+(package! org-modern :pin "7d037569bc4a05f40262ea110c4cda05c69b5c52")
+(package! org-appear :recipe (:host github :repo "awth13/org-appear")
+  :pin "eb9f9db40aa529fe4b977235d86494b115281d17")
+(package! ob-http :pin "b1428ea2a63bcb510e7382a1bf5fe82b19c104a7")
+(package! valign :recipe (:host github :repo "casouri/valign"))

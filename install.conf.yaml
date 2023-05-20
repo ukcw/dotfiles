@@ -13,6 +13,9 @@
     ~/.doom.d: 
       force: true
       path: doom
+    ~/.config/fish:
+      force: true
+      path: fish
 
 #- create:
 

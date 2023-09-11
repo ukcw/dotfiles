@@ -16,7 +16,7 @@
     ~/.config/fish:
       force: true
       path: fish
-
+    ~/.wezterm.lua: .wezterm.lua
 #- create:
 
 - shell:

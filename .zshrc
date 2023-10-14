@@ -138,7 +138,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # opam configuration
-[[ ! -r /Users/ulysseskee/.opam/opam-init/init.zsh ]] || source /Users/ulysseskee/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r ~/.opam/opam-init/init.zsh ]] || source ~/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 # pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
@@ -159,7 +159,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[ -f "/Users/ulysseskee/.ghcup/env" ] && source "/Users/ulysseskee/.ghcup/env" # ghcup-env
+[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
 
 # Set C++ compiler to use clang from brew for compatibility with C++ 11 -- this was done for Neorg sync-parsers
 export CC=/opt/homebrew/opt/llvm/bin/clang
@@ -180,4 +180,4 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # Python Scripts Path (e.g. pipenv)
-export PATH=$PATH:/Users/ulysseskee/.local/bin
+export PATH=$PATH:~/.local/bin

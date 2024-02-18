@@ -29,7 +29,7 @@ end
 #[ -f "/Users/ulysseskee/.ghcup/env" ] && source "/Users/ulysseskee/.ghcup/env" # ghcup-env
 
 # set C++ compiler to use clang from brew for compatibility with C++ 11 -- this was done for Neorg sync-parsers
-set -gx CC /opt/homebrew/opt/llvm/bin/clang
+# set -gx CC /opt/homebrew/opt/llvm/bin/clang
 
 # add ~/.emacs.d/bin/ to PATH
 #set -x PATH="$HOME/.emacs.d/bin:$PATH"
@@ -51,3 +51,6 @@ set -gx CC /opt/homebrew/opt/llvm/bin/clang
 
 # set starship prompt
 starship init fish | source
+
+# use zoxide as a replacement for cd
+zoxide init --cmd cd fish | source

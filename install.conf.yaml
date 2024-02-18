@@ -2,22 +2,25 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: .vimrc
-    ~/.config/nvim: 
+    ~/.config/nvim:
       force: true
       path: nvim
-    ~/.doom.d: 
+    ~/.doom.d:
       force: true
       path: doom
     ~/.config/fish:
       force: true
       path: fish
-    ~/.wezterm.lua: .wezterm.lua
+    ~/.config/wezterm:
+      force: true
+      path: wezterm
+  #~/.wezterm.lua: wezterm/.wezterm.lua
 #- create:
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

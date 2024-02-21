@@ -53,4 +53,4 @@ end
 starship init fish | source
 
 # use zoxide as a replacement for cd
-zoxide init --cmd cd fish | source
+zoxide init fish --cmd cd | source

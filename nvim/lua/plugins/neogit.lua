@@ -6,5 +6,9 @@ return {
     "sindrets/diffview.nvim",        -- optional
     "ibhagwan/fzf-lua",              -- optional
   },
-  config = true
+  keys = {
+    -- add keymap to open Neogit
+    { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
+  },
+  config = true,
 }
